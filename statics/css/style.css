@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+html {
+    font-size: 100%;
+}
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #faf8f7;
+    color: #292626;
+}
+a {
+    color: #292626;
+    text-decoration: none;
+}
+a:hover {
+    color: #558B6E;
+}
+ul {
+    list-style-type: none;
+}
+section {
+    margin: 5rem 0 10rem 0;
+}
+
+/* COMMON */
+.message {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+
+/* CONTAINER */
+.wide-container{
+    width: 100%;
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 2rem 0;
+}
+.container{
+    width: 100%;
+    max-width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+/* FOOTER */
+.copyright {
+    text-align: right;
+}
+
+
+/* HOME */
+.game_icon {
+    width: 350px;
+    border: #292626 2px solid;
+    border-radius: 50%;
+}
+.game_icon:hover {
+    border: #558B6E 4px solid;
+}
+.game-list {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* VALORANT+OVERWATCH */
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.m-form-text {
+    height: 2.4em;
+    width: 100%;
+    padding: 0 16px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 0 0 1px #ccc inset;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.m-form-text:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+.m-form-select {
+    position: relative;
+}
+.m-form-select:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: 12px;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #333;
+    border-right: 2px solid #333;
+    transform: rotate(135deg);
+    pointer-events: none;
+}
+.m-form-select select {
+    height: 2.4em;
+    width: 100%;
+    padding: 0 8px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 0 0 1px #ccc inset;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+.m-form-select select::-ms-expand {
+    display: none;
+}
+.m-form-select select:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+.m-form-submit-button {
+    display: inline-block;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+.m-form-submit-button:hover {
+    background-color: #000;
+}
+.m-form-submit-button:focus {
+    outline: 0;
+    background-color: #000;
+    border: 2px solid rgb(33, 150, 243);
+}
+
+.layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.player-info {
+    width: 60%;
+}
+.team-info {
+    width: 30%;
+    text-align: left;
+}
+.team-atk .team-def {
+    margin-bottom: 5rem;
+}
+.team-atk h3 {
+    color: #C1292E;
+}
+.team-def h3 {
+    color: #3454D1;
+}

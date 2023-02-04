@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="valorant">
+    <h2 class="message">プレイヤーを追加してBalanceをクリックしてください。</h2>
+
+    <div class="layout">
+
+
+        <div class="player-info">
+
+            <form method="post" action="">
+                {% csrf_token %}
+
+                <div class="form">
+                    {% for i in for_range %}
+                    <div class="player">
+                        
+                        <input type="text" name="name-{{i}}" placeholder="プレイヤー名" class="m-form-text">
+                        <div class="m-form-select">
+                            <select name="rank-{{i}}">
+                                <option value="radiant">レディアント</option>
+                                <option value="immortal">イモータル</option>
+                                <option value="ascendant">アセンダント</option>
+                                <option value="diamond">ダイヤモンド</option>
+                                <option value="platinum">プラチナ</option>
+                                <option value="gold">ゴールド</option>
+                                <option value="silver">シルバー</option>
+                                <option value="bronze">ブロンズ</option>
+                                <option value="iron">アイアン</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <input type="submit" value="BALANCE!" class="m-form-submit-button">
+            </form>
+
+        </div>
+
+        <div class="team-info">
+            <div class="team-atk">
+                <h3>ATTACKERサイド</h3>
+                <ul>
+                    {% for player in TEAM_ATK %}
+                    <li>{{ player.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="team-def">
+                <h3>DEFENDERサイド</h3>
+                {% for player in TEAM_DEF %}
+                <p>{{ player.name }}</p>
+                {% endfor %}
+            </div>
+
+            <input type="button" value="もう一度" class="m-form-submit-button" onclick="window.location.reload();" />
+        </div>
+
+    </div>
+</section>
+
+{% endblock content %}
