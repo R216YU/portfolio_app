@@ -7,7 +7,7 @@ from django.shortcuts import render
 # HOME
 def home_func(request):
     params = {
-        "page_title": "HOME / TeamBalanceBot",
+        "page_title": "HOME / TeamBalanceApp",
     }
     return render(request, "home.html", params)
 
