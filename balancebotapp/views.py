@@ -1,6 +1,6 @@
 import random
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 # Create your views here.
 
@@ -41,7 +41,7 @@ VALORANT_RANK_NAME = list(VALORANT_RANK.keys())
 
 def valorant_func(request):
     params = {
-        "page_title": "Valorant / TeamBalanceBot",
+        "page_title": "Valorant / TeamBalanceApp",
         "for_range": [i for i in range(1, 11)],
     }
 
@@ -55,12 +55,15 @@ def valorant_func(request):
             player_name = request.POST[f"name-{i}"]
             player_rank = request.POST[f"rank-{i}"]
             player = ValorantPlayer(player_name, player_rank)
-            player.rating += random.randint(-5, 5)
+            player.rating = VALORANT_RANK[player.rank] # ratingの初期化
+            player.rating += random.randint(-5, 5) # ratingに乱数追加
         # Playerインスタンスがまとめられたリストをランクレーティングでソート
         ValorantPlayer.players.sort(key=lambda player: player.rating)
+        
         # ソートされた情報をもとにチーム分け
         TEAM_ATK = ValorantPlayer.players[::2]
         TEAM_DEF = ValorantPlayer.players[1::2]
+        
         params["TEAM_ATK"] = TEAM_ATK
         params["TEAM_DEF"] = TEAM_DEF
         
@@ -97,7 +100,7 @@ OVERWATCH_RANK_NAME = list(OVERWATCH_RANK.keys())
 
 def overwatch_func(request):
     params = {
-        "page_title": "Overwatch2 / TeamBalanceBot",
+        "page_title": "Overwatch2 / TeamBalanceApp",
         "for_range": [i for i in range(1, 11)],
     }
     
@@ -106,17 +109,18 @@ def overwatch_func(request):
     
     else:
         OverwatchPlayer.players = []
-        # フォームからプレイヤーの情報を取得し、Playerインスタンスを作成
+        
         for i in range(1, 11):
             player_name = request.POST[f"name-{i}"]
             player_rank = request.POST[f"rank-{i}"]
             player = OverwatchPlayer(player_name, player_rank)
+            player.rating = OVERWATCH_RANK[player.rank]
             player.rating += random.randint(-5, 5)
-        # Playerインスタンスがまとめられたリストをランクレーティングでソート
+            
         OverwatchPlayer.players.sort(key=lambda player: player.rating)
-        # ソートされた情報をもとにチーム分け
         TEAM_ATK = OverwatchPlayer.players[::2]
         TEAM_DEF = OverwatchPlayer.players[1::2]
+        
         params["TEAM_ATK"] = TEAM_ATK
         params["TEAM_DEF"] = TEAM_DEF
         
